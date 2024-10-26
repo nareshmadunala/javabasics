@@ -18,7 +18,7 @@ public class WhileLoopAMap {
 
         Iterator<Map.Entry<Integer, String>> iterator = map.entrySet().iterator();
         while (iterator.hasNext()){
-            Map.Entry entry = iterator.next();
+            Map.Entry<Integer, String> entry = iterator.next();
             System.out.println(entry.getKey()+"    "+ entry.getValue());
         }
     }
