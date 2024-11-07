@@ -10,38 +10,27 @@ public class GroupEmpByCity {
     public static void main(String[] args) {
         List<Employee> empList = EmployeeService.getAllEmployees();
 
-
         // print all departments
         //empList.stream().map(Employee::getDepartment).distinct().forEach(System.out::println);
-
         //System.out.println(empList.stream().map(Employee::getDepartment).distinct().count());
-
 
         // highest paid employee
        // System.out.println(empList.stream().max(Comparator.comparing(Employee::getSalary)));
-
         Map<String, List<String>> empMapByCity = empList.stream()
                 .collect(Collectors.groupingBy(Employee::getCity, Collectors.mapping(Employee::getName, Collectors.toList())));
-
         // System.out.println(empMapByCity);
-
-        // Output
         // {Delhi=[Sudha, Kumar], San Diego=[Rani, John], Phoenix=[Naresh, Arya, Ravi, Sam, Nancy, Mouni]}
 
         Map<String, Long> empMapByCityCount = empList.stream()
                 .collect(Collectors.groupingBy(Employee::getCity, Collectors.counting()));
 
         // System.out.println(empMapByCityCount);
-
-        // Output
         // {Delhi=2, San Diego=2, Phoenix=6}
 
         Map<Character, Double> empMapByGenderAvgAge = empList.stream()
                 .collect(Collectors.groupingBy(Employee::getGender, Collectors.averagingInt(Employee::getAge)));
 
         // System.out.println(empMapByGenderAvgAge);
-
-        // Output
         // {F=40.2, M=39.8}
 
         Map<Character, Optional<Employee>> empMapByGenderMaxSalary = empList.stream()
@@ -49,10 +38,8 @@ public class GroupEmpByCity {
                         Collectors.maxBy(Comparator.comparing(Employee::getSalary))));
 
        // System.out.println(empMapByGenderMaxSalary);
-
         // {F=Optional[Employee(name=Mouni, age=32, city=Phoenix, gender=F, department=Marketing, email=mouni@email.com, salary=9100)],
         // M=Optional[Employee(name=Ravi, age=45, city=Phoenix, gender=M, department=Sales, email=ravi@email.com, salary=8000)]}
-
 
         Map<Character, Employee> empMapByGenderMaxSalary2 = empList.stream()
                 .collect(Collectors.groupingBy(Employee::getGender,

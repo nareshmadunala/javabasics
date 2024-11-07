@@ -15,11 +15,8 @@ public class StringContainsVowels {
     }
 
     private static boolean checkForVowels(String str1) {
-
         boolean containsVowels = false;
-
         containsVowels = str1.toLowerCase().matches(".*[aeiou].*");
-
         return containsVowels;
     }
 }

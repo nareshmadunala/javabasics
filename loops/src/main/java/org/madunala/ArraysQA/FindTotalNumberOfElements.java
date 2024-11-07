@@ -5,6 +5,4 @@ public class FindTotalNumberOfElements {
         int[] numbers = {2, 5, 3, 9, 6, 1};
         System.out.println(Arrays.stream(numbers).sum());
     }
-
-
 }
